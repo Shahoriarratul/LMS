@@ -45,6 +45,7 @@ function TitleForm({ initialData, courseId }: TitleFormProps) {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
       toast.success("course Updated");
+      toggleEdit();
       router.refresh();
     } catch {
       toast.error("Something went wrong");
