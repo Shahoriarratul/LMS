@@ -17,9 +17,7 @@ interface AttachmentFormProps {
 }
 
 const formSchema = z.object({
-  imageUrl: z.string().min(1, {
-    message: "Image is required",
-  }),
+  url: z.string().min(1),
 });
 
 function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
@@ -29,7 +27,7 @@ function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}`, values);
+      await axios.post(`/api/courses/${courseId}/attachments`, values);
       toast.success("course Updated");
       toggleEdit();
       router.refresh();
@@ -51,33 +49,27 @@ function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
           )}
         </Button>
       </div>
-      {!isEditing &&
-        (!initialData.imageUrl ? (
-          <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
-            <ImageIcon className="h-10 w-10 text-slate-500" />
-          </div>
-        ) : (
-          <div className="relative aspect-video mt-2">
-            <Image
-              alt="Upload"
-              fill
-              className="Object-cover rounded-md"
-              src={initialData.imageUrl}
-            ></Image>
-          </div>
-        ))}
+      {!isEditing && (
+        <>
+          {initialData.attachments.length === 0 && (
+            <p className="text-sm mt-2 text-slate-500 italic">
+              No attachment yet
+            </p>
+          )}
+        </>
+      )}
       {isEditing && (
         <div>
           <FileUpload
-            endpoint="courseImage"
+            endpoint="courseAttchment"
             onChange={(url) => {
               if (url) {
-                onSubmit({ imageUrl: url });
+                onSubmit({ url: url });
               }
             }}
           />
           <div className="text-xs text-muted-foreground mt-4">
-            16:9 aspect ratio recomended
+            Add anything your students might need to compleate the course.
           </div>
         </div>
       )}
