@@ -79,7 +79,7 @@ function AttachmentForm({ initialData, courseId }: AttachmentFormProps) {
                   <File className="h-4 w-4 mr-2 flex-shrink-0" />
                   <p className="text-sm line-clamp-1">{attachment.name}</p>
                   {deletingId === attachment.id && (
-                    <div>
+                    <div className=" ml-auto">
                       <Loader2 className="h-4 w-4 animate-spin" />
                     </div>
                   )}
