@@ -54,7 +54,7 @@ function ChapterForm({ initialData, courseId }: ChapterFormProps) {
       toast.error("Something went wrong");
     }
   };
-  const onReorder = async (updateData: { id: string; position: number }) => {
+  const onReorder = async (updateData: { id: string; position: number }[]) => {
     try {
       setisUpdating(true);
       await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
