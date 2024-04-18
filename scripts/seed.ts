@@ -19,13 +19,13 @@ async function main() {
           name: "Photography",
         },
         {
-          name: "accounting",
+          name: "Accounting",
         },
         {
           name: "Engineering",
         },
         {
-          name: "filming",
+          name: "Filming",
         },
       ],
     });
