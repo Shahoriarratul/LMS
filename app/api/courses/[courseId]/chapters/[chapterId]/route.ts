@@ -137,7 +137,7 @@ export async function PATCH(
 
     return NextResponse.json(chapter);
   } catch (error) {
-    console.log("[COURSE_CHAPTER_ID", error);
+    console.log("[COURSE_CHAPTER_ID]", error);
     return new NextResponse("Interanal Error", { status: 500 });
   }
 }
