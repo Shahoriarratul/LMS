@@ -1,7 +1,6 @@
 import { Category, Course } from "@prisma/client";
 import { getProgress } from "./get-progress";
 import { db } from "@/lib/db";
-import { promises } from "dns";
 type CourseWithProgressWithcategory = Course & {
   category: Category | null;
   chapters: { id: string }[];

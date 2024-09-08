@@ -20,11 +20,14 @@ export const CourseSidebarItem = ({
 }: CourseSidebarItemPorps) => {
   const pathname = usePathname();
   const router = useRouter();
-  const Icon = isLocked ? Lock : isCompleated ? CheckCircle : PlayCircle;
+  // prettier-ignore
+  const Icon = isLocked ? Lock : (isCompleated ? CheckCircle : PlayCircle);
   const isActive = pathname?.includes(id);
 
   const onClick = () => {
     router.push(`/courses/${courseId}/chapters/${id}`);
+
+    console.log(isLocked);
   };
 
   return (
