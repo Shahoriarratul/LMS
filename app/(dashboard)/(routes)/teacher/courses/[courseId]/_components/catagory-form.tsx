@@ -1,4 +1,3 @@
-/* eslint-disable no-alert, no-console */
 "use client";
 
 import * as z from "zod";
