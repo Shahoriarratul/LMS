@@ -12,7 +12,7 @@ interface ChartProps {
 export const Chart = ({ data }: ChartProps) => {
   return (
     <Card>
-      <ResponsiveContainer width="100%" height={1500}>
+      <ResponsiveContainer width="100%" height={550}>
         <BarChart data={data}>
           <XAxis
             dataKey="name"

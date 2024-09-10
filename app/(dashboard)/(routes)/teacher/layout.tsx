@@ -5,11 +5,11 @@ import { Children } from "react";
 
 const TeacherLayout = ({ children }: { children: React.ReactNode }) => {
   const { userId } = auth();
-  if (isTeacher(userId)) {
+  if (!userId) {
     return redirect("/");
   }
 
-  return <>children</>;
+  return <>{children}</>;
 };
 
 export default TeacherLayout;
